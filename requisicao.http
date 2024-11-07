@@ -1,0 +1,30 @@
+GET http://localhost:3000/indicadores
+
+###
+POST http://localhost:3000/indicadores
+Content-Type: application/json
+
+[
+  {
+    "nome": "Samuel"
+  },
+  {
+    "nome": "Dantas"
+  }
+]
+
+###
+GET https://partes-mecanicas-api.onrender.com/indicadores
+
+###
+POST https://partes-mecanicas-api.onrender.com/indicadores
+Content-Type: application/json
+
+[
+  {
+    "nome": "Samuel"
+  },
+  {
+    "nome": "Dantas"
+  }
+]
