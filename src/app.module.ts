@@ -15,7 +15,7 @@ import { VolanteModule } from './volante/volante.module';
       password: process.env.POSTGRES_PASSWORD,
       database: process.env.POSTGRES_DB,
       autoLoadEntities: true,
-      synchronize: false, // Apenas para desenvolvimento; cuidado ao usar em produção
+      synchronize: true, // Apenas para desenvolvimento; cuidado ao usar em produção
 })
 
     }),
