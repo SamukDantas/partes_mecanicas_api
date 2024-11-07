@@ -1,20 +1,22 @@
-# Usando a imagem do Node.js
+# Use uma imagem base adequada, por exemplo, Node.js (se a aplicação for em Node.js)
 FROM node:18
 
-# Define o diretório de trabalho
+# Cria o diretório de trabalho e copia os arquivos da aplicação
 WORKDIR /partes_mecanicas_api
-
-# Copia os arquivos do projeto
-COPY package*.json ./
-RUN npm install
-
 COPY . .
 
-# Compila o projeto NestJS
-RUN npm run build
+# Instala dependências
+RUN npm install
 
-# Expõe a porta
+# Expõe a porta da aplicação
 EXPOSE 3000
 
-# Comando para iniciar o servidor
-CMD ["npm", "run", "start:prod"]
+# Define variáveis de ambiente (Render permite definir variáveis no ambiente de produção)
+ENV POSTGRES_HOST=$POSTGRES_HOST \
+    POSTGRES_PORT=$POSTGRES_PORT \
+    POSTGRES_USER=$POSTGRES_USER \
+    POSTGRES_PASSWORD=$POSTGRES_PASSWORD \
+    POSTGRES_DB=$POSTGRES_DB
+
+# Comando para iniciar a aplicação
+CMD ["npm", "start"]
